@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinger</title>
+    <link rel="stylesheet" href="../Style/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="login-register">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle active" id="toggle-login">Log in</button>
+                <button type="button" class="toggle" id="toggle-register">Register</button>
+            </div>
+            <form class="input-group" id="login">
+                <input type="email" class="input-field" id="login-email" placeholder="Email" required>
+                <input type="password" class="input-field" id="login-pass" placeholder="Enter password" required>
+                <p class="check-box"><i class='bx bx-error-alt'></i></p><button type="button" id="forgot">Forgot password</button>
+                <button type="submit" class="submit-btn" id="login-sub-btn">Log In</button>
+            </form>
+            <form class="input-group" id="register">
+                <input type="text" class="input-field" id="reg-name" placeholder="Enter name" required>
+                <input type="email" class="input-field" id="reg-email" placeholder="Enter Email" required>
+                <input type="number" class="input-field" id="reg-phone" placeholder="Enter Phone no." required>
+                <input type="password" class="input-field" id="reg-pass" placeholder="Enter a password" required>
+                <input type="checkbox" class="check-box" id="check" required><span>I agree to the terms &
+                    conditions</span>
+                <button type="submit" class="submit-btn" id="reg-sub-btn">Register</button>
+            </form>
+            <form class="input-group" id="forgot-pass">
+                <input type="email" class="input-field" id="forgot-email" placeholder="Enter Email" required>
+                <button type="submit" class="submit-btn" id="forgot-sub-btn">Send reset link</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="../DOM/signup-login.js"></script>
+   
+</html>

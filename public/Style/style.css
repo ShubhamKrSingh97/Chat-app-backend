@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.login-register {
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(black, #f9eafe);
+    background-color: black;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.form-box {
+    width: 320px;
+    height: 480px;
+    border-radius: 3px;
+    position: relative;
+    margin: 6% auto;
+    background: #fff;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.button-box {
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 0 20px 9px #ff61241f;
+    border-radius: 30px;
+}
+
+.toggle {
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    color: gray;
+}
+
+.active{
+    color:white;
+}
+
+#btn {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background-color: black;
+    border-radius: 30px;
+    transition: 0.5s;
+}
+
+.input-group {
+    top: 180px;
+    position: absolute;
+    width: 220px;
+    transition: .5s;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #008080;
+    outline: none;
+    background: transparent;
+}
+
+.submit-btn {
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background-color: black;
+    color: white;
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    transition: .3s;
+}
+
+.submit-btn:hover {
+    transform: translateY(-5px);
+    color: white;
+}
+
+.check-box {
+    margin: 30px 10px 30px 0;
+}
+
+span {
+    color: #777;
+    font-size: 12px;
+    bottom: 68px;
+    position: absolute;
+}
+
+#forgot {
+    background-color: transparent;
+    color: #777;
+    font-size: 12px;
+    bottom: 52px;
+    position: absolute;
+    border: none;
+    cursor: pointer;
+}
+
+#login {
+    left: 50px;
+}
+
+#register {
+    left: 450px;
+}
+#forgot-pass{
+    left:450px;
+}
+#forgot-sub-btn{
+    margin-top: 10%;
+}
