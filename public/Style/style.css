@@ -134,3 +134,30 @@ span {
 #forgot-sub-btn{
     margin-top: 10%;
 }
+
+/*separate*/
+.main-container{
+    display: flex;
+    padding: 10px;
+}
+.chats-container{
+    background-color: #777;
+    width: 70%;
+    height: 80vh;
+    
+}
+.groups-container{
+    background-color: pink;
+    width: 30%;
+}
+.form-container{
+    position: sticky;
+    bottom: 0;
+}
+#chat-box{
+    height: 90%;
+}
+
+.actions{
+    background-color: #008080;
+}

@@ -17,7 +17,6 @@ const addMessage = async (req, res) => {
 const getAllChats = async (req, res) => {
     try {
         const index=parseInt(req.query.msgid);
-        console.log("Here it is"+req.query.msgid);
         const allmsg = await Message.findAll({
             include:[{
                 model: User,
