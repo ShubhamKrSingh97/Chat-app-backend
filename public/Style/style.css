@@ -142,7 +142,7 @@ span {
 }
 .chats-container{
     background-color: #777;
-    width: 70%;
+    width: 50%;
     height: 80vh;
     
 }
@@ -160,4 +160,7 @@ span {
 
 .actions{
     background-color: #008080;
+}
+.manage-members-container{
+    background-color: bisque;
 }
