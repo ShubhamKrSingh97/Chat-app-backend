@@ -99,3 +99,17 @@ loginForm.addEventListener('submit', async (e) => {
 
 });
 
+forgotPassForm.addEventListener('submit',async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem('key');
+    const forgotPassEmail = document.getElementById('forgot-email');
+    let obj = {
+        email: forgotPassEmail.value
+    }
+    try{
+        const res= await axios.post("http://localhost:5000/password/forgot-password", obj);
+    }catch(err){
+        console.log(err);
+    }
+    
+});

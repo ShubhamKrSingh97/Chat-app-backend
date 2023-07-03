@@ -2,6 +2,7 @@ const submitBtn = document.getElementById('submit');
 const inputForm = document.getElementById('input-form');
 const message = document.getElementById('text-input');
 const ul = document.getElementById('messages-list');
+const socket = io("http://localhost:5000");
 
 var activeGroupId = null;
 
@@ -15,15 +16,12 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
 var interval;
 
-function getAllMessages(groupId) {
+async function getAllMessages(groupId) {
     const limit = 20;
     const token = localStorage.getItem('token');
     const oldmessages = JSON.parse(localStorage.getItem(`msgs${groupId}`)) || [];
     let lastid = 0;
-    if (interval) {
-        clearInterval(interval)
-    }
-    interval = setInterval(async () => {
+
         if (oldmessages.length > 0) {
             lastid = oldmessages[oldmessages.length - 1].id;
         }
@@ -36,7 +34,7 @@ function getAllMessages(groupId) {
                 allmsg = [...oldmessages, ...newMessages];
             }
             else {
-                allmsg = [...newMessages];
+                allmsg = [...newMessages]; 
             }
             if (limit < allmsg.length) {
                 allmsg = allmsg.splice(allmsg.length - limit);
@@ -48,7 +46,6 @@ function getAllMessages(groupId) {
         } catch (err) {
             alert(err.response.data.message);
         }
-    }, 6000);
 
 }
 
@@ -103,9 +100,8 @@ function displayUsers(res, groupId) {
         }
         try {
             await axios.post('http://localhost:5000/add-member', obj, { headers: { 'Authorization': token } })
-            alert(res.data.message);
         } catch (err) {
-            alert(err.response.data.message);
+            console.log(err)
         }
     });
 }
@@ -132,7 +128,7 @@ function addMessage() {
             const obj = { message: message.value, groupId: groupId };
             try {
                 const res = await axios.post('http://localhost:5000/send-message', obj, { headers: { "Authorization": token } });
-                displayOnScreen(res.data.message, res.data.name);
+                socket.emit('chat message',{...obj,username:res.data.name});
                 message.value="";
             } catch (err) {
                 alert(err.response.data.message);
@@ -197,3 +193,18 @@ function displayMembers(res) {
 
     })
 };
+
+
+
+socket.on("connect", () => {
+    console.log(socket.id); 
+  });
+  
+  socket.on("chat message", (obj)=>{
+    console.log("Recieved message", obj)
+    const {message, username} = obj;
+    displayOnScreen(message, username);;
+  })
+  socket.on("disconnect", () => {
+    console.log(socket.id); 
+  });
