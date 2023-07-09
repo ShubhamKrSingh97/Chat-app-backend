@@ -3,17 +3,14 @@ const sequelize = require('../utils/database');
 const User=require('../models/user.model');
 const {Op}=require('sequelize');
 const addMessage = async (req, res) => {
-    const transactions = await sequelize.transaction();
     try {
         const msg = await Message.create({
             message: req.body.message,
             userId: req.user.id,
             groupId:req.body.groupId
-        },{transactions});
-        await transactions.commit();
+        });
         res.status(202).json({ name: req.user.name, message: msg.message });
     } catch (err) {
-        await transactions.rollback();
         res.status(500).json({ message: 'Something went wrong' });
     }
 

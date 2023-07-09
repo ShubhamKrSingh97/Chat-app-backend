@@ -41,6 +41,9 @@ io.on("connection", (socket) => {
   socket.on('chat message',(message)=>{
     io.emit('chat message',message);
   })
+  socket.on('user typing',(obj)=>{
+    io.emit('user typing',obj)
+  })
   socket.on('disconnect', () => {
     console.log('A user disconnected');
   });
