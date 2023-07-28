@@ -33,11 +33,6 @@ toggleLogin.addEventListener('click', (e) => {
     forgotPassForm.style.left = '450px';
 });
 
-forgotPassBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    loginForm.style.left = '-400px';
-    forgotPassForm.style.left = '50px';
-})
 //--------------registration----------------//
 
 const regEmail = document.getElementById('reg-email');
@@ -56,7 +51,7 @@ regForm.addEventListener('submit', async (e) => {
             pass: regPassword.value
         };
         try {
-           const res= await axios.post("http://localhost:5000/add-user", obj);
+           const res= await axios.post("/add-user", obj);
             regEmail.value = "";
             regName.value = "";
             regPhone.value="";
@@ -85,10 +80,10 @@ loginForm.addEventListener('submit', async (e) => {
             email: loginEmail.value
         }
         try {
-            const res = await axios.post(`http://localhost:5000/user-login`, obj);
+            const res = await axios.post(`/user-login`, obj);
             localStorage.setItem('name',res.data.name);
             localStorage.setItem('token',res.data.token);
-            window.location.href="./homepage.html"
+            window.location.href="/home"
             alert(res.data.message);
         } catch (err) {
             alert(err.response.data.message);
@@ -98,19 +93,4 @@ loginForm.addEventListener('submit', async (e) => {
             alert("Please fill in all the details");
     }
 
-});
-
-forgotPassForm.addEventListener('submit',async (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem('key');
-    const forgotPassEmail = document.getElementById('forgot-email');
-    let obj = {
-        email: forgotPassEmail.value
-    }
-    try{
-        const res= await axios.post("http://localhost:5000/password/forgot-password", obj);
-    }catch(err){
-        console.log(err);
-    }
-    
 });
